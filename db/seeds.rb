@@ -7,36 +7,29 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'random_data'
 
- # Create Posts
- 50.times do
- # #1
-   Post.create!(
- # #2
-     title:  RandomData.random_sentence,
-     body:   RandomData.random_paragraph
-   )
- end
- posts = Post.all
+50.times do
+    Post.create!(
+        title: RandomData.random_sentence,
+        body: RandomData.random_paragraph
+    )
 
- # Create Comments
- # #3
- 100.times do
-   Comment.create!(
- # #4
-     post: posts.sample,
-     body: RandomData.random_paragraph
-   )
- end
+    Advertisement.create!(
+        title: RandomData.random_sentence,
+        body: RandomData.random_paragraph,
+        price: rand(50)
+    )
+end
+post = Post.all
 
- puts "Seed finished"
- puts "#{Post.count} posts created"
- puts "#{Comment.count} comments created"
+100.times do
+    Comment.create!(
+        post: post.sample,
+        body: RandomData.random_paragraph
+    )
+end
 
- my_post = Post.find_or_create_by!(
-    title: "My Unique Post",
-    body: "I hope you are having a good day!"
-)
-Comment.find_or_create_by!(
-    post: my_post,
-    body: "It's been okay. How are you?"
-)
+puts "Seed finished"
+puts "#{Post.count} post created"
+puts "#{Comment.count} comments created"
+
+puts "#{Advertisement.count} ads created"
