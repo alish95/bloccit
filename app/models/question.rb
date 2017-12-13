@@ -1,3 +1,7 @@
 class Question < ApplicationRecord
-  has_many :answers
+     attribute :title, :string
+     attribute :body, :text
+     attribute :resolved, :boolean
+
+     has_many :answers
 end
