@@ -42,11 +42,11 @@ topics = Topic.all
          price: rand(50)
     )
 
-    Advertisement.create!(
-        title: RandomData.random_sentence,
-        body: RandomData.random_paragraph,
-        price: rand(50)
-   )
+  ##  Advertisement.create!(
+        ##title: RandomData.random_sentence,
+        ##body: RandomData.random_paragraph,
+        ##price: rand(50)
+   ##)
 
     Question.create!(
         title: RandomData.random_sentence,
@@ -69,18 +69,35 @@ question = Question.all
     )
 end
 
-user = User.first
-user.update_attributes!(
-  email: 'alicewc95@gmail.com', # replace this with your personal email
-  password: 'helloworld'
+# Create an admin user
+ admin = User.create!(
+   name:     'Admin User',
+   email:    'admin@example.com',
+   password: 'helloworld',
+   role:     'admin'
+ )
+
+ # Create a member
+ member = User.create!(
+   name:     'Member User',
+   email:    'member@example.com',
+   password: 'helloworld'
+ )
+
+ moderator = User.create!(
+  name:     'Moderator User',
+  email:    'moderator@example.com',
+  password: 'helloworld',
+  role:     'moderator'
 )
+
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} post created"
 puts "#{Comment.count} comments created"
 
-puts "#{Advertisement.count} ads created"
+##puts "#{Advertisement.count} ads created"
 puts "#{SponsoredPost.count} sponsored posts created"
 puts "#{Question.count} questions created"
 puts "#{Answer.count} answers created"
