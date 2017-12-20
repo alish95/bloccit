@@ -3,7 +3,7 @@ include RandomData
 include SessionsHelper
 
 RSpec.describe TopicsController, type: :controller do
-  let (:my_topic) { Topic.create!(name:  RandomData.random_sentence, description:   RandomData.random_paragraph) }
+  let(:my_topic) { create(:topic) }
 
   context "guest" do
     describe "GET index" do
@@ -35,7 +35,7 @@ RSpec.describe TopicsController, type: :controller do
       end
     end
 
-     describe "GET new" do
+    describe "GET new" do
       it "returns http redirect" do
         get :new
         expect(response).to redirect_to(new_session_path)
@@ -66,7 +66,7 @@ RSpec.describe TopicsController, type: :controller do
       end
     end
 
-    describe "DELETE destroy" do
+  describe "DELETE destroy" do
       it "returns http redirect" do
         delete :destroy, params: { id: my_topic.id }
         expect(response).to redirect_to(new_session_path)

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :topics do
     resources :posts, except: [:index]
+    resources :sponsored_posts, except: [:index]
   end
 
   resources :posts, only: [] do
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
     post '/down-vote' => 'votes#down_vote', as: :down_vote
   end
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
 
   get 'about' => 'welcome#about'
