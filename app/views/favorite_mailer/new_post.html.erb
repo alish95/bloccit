@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>You're following "<%= @post.title %>"</h1>
+    <p>Your will be notified of all new comments.
+        If you don't want to receive further notifications,
+        click the link to unfavorite your
+        <%= link_to "post", topic_post_url(@post.topic, @post) %>
+    </p>
+  </body>
+</html>
